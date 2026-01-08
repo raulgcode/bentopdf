@@ -30,3 +30,9 @@ coverage/
 #backup
 .seo-backup
 libreoffice-wasm-package
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
