@@ -380,6 +380,12 @@ export const categories = [
         icon: 'ph-envelope',
         subtitle: 'Convert email files (EML, MSG) to PDF format.',
       },
+      {
+        href: import.meta.env.BASE_URL + 'html-to-pdf.html',
+        name: 'HTML to PDF',
+        icon: 'ph-code',
+        subtitle: 'Write HTML/CSS code with live preview and export to PDF.',
+      },
     ],
   },
   {

@@ -521,5 +521,57 @@
     "subtitle": "Convert email files (EML, MSG) to PDF format. Supports Outlook exports and standard email formats.",
     "acceptedFormats": "EML, MSG files",
     "convertButton": "Convert to PDF"
+  },
+  "htmlToPdf": {
+    "name": "HTML to PDF",
+    "subtitle": "Write HTML/CSS code with live preview and export to PDF.",
+    "pageTitle": "HTML to PDF - Live Preview Editor",
+    "description": "Write HTML and CSS code, see real-time preview, and export to PDF with your selected page size.",
+    "editorTitle": "HTML + CSS Editor",
+    "previewTitle": "Live Preview",
+    "pageSize": "Page Size",
+    "orientation": "Orientation",
+    "portrait": "Portrait",
+    "landscape": "Landscape",
+    "margin": "Margin",
+    "loadTemplate": "Load Template",
+    "exportPdf": "Export PDF",
+    "formatCode": "Format Code",
+    "clearCode": "Clear Code",
+    "refreshPreview": "Refresh Preview",
+    "chooseTemplate": "Choose a Template",
+    "templates": {
+      "basic": {
+        "name": "Basic Document",
+        "description": "A simple document with heading and paragraphs"
+      },
+      "invoice": {
+        "name": "Invoice Template",
+        "description": "A professional invoice layout"
+      },
+      "resume": {
+        "name": "Resume Template",
+        "description": "A clean resume/CV layout"
+      },
+      "report": {
+        "name": "Report Template",
+        "description": "A formal report with sections"
+      }
+    },
+    "tips": {
+      "title": "Tips",
+      "styleTag": "Include CSS styles inside a <style> tag",
+      "autoUpdate": "The preview updates automatically as you type",
+      "pageSize": "Use the page size selector to match your desired PDF output",
+      "privacy": "All processing happens in your browser - your code never leaves your device"
+    },
+    "errors": {
+      "emptyContent": "Empty Content",
+      "emptyContentMessage": "Please enter some HTML code before exporting.",
+      "exportFailed": "Export Failed"
+    },
+    "customDimensions": "Custom dimensions",
+    "widthPts": "Width (pts)",
+    "heightPts": "Height (pts)"
   }
 }

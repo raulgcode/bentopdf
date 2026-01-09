@@ -521,5 +521,57 @@
     "subtitle": "Chuyển đổi tệp email (EML, MSG) sang định dạng PDF. Hỗ trợ xuất Outlook và định dạng email tiêu chuẩn.",
     "acceptedFormats": "Tệp EML, MSG",
     "convertButton": "Chuyển đổi sang PDF"
+  },
+  "htmlToPdf": {
+    "name": "HTML sang PDF",
+    "subtitle": "Viết mã HTML/CSS với xem trước trực tiếp và xuất sang PDF.",
+    "pageTitle": "HTML sang PDF - Trình soạn thảo với Xem trước Trực tiếp",
+    "description": "Viết mã HTML và CSS, xem trước theo thời gian thực và xuất sang PDF với kích thước trang bạn chọn.",
+    "editorTitle": "Trình soạn thảo HTML + CSS",
+    "previewTitle": "Xem trước Trực tiếp",
+    "pageSize": "Kích thước Trang",
+    "orientation": "Hướng",
+    "portrait": "Dọc",
+    "landscape": "Ngang",
+    "margin": "Lề",
+    "loadTemplate": "Tải Mẫu",
+    "exportPdf": "Xuất PDF",
+    "formatCode": "Định dạng Mã",
+    "clearCode": "Xóa Mã",
+    "refreshPreview": "Làm mới Xem trước",
+    "chooseTemplate": "Chọn Mẫu",
+    "templates": {
+      "basic": {
+        "name": "Tài liệu Cơ bản",
+        "description": "Tài liệu đơn giản với tiêu đề và đoạn văn"
+      },
+      "invoice": {
+        "name": "Mẫu Hóa đơn",
+        "description": "Bố cục hóa đơn chuyên nghiệp"
+      },
+      "resume": {
+        "name": "Mẫu Sơ yếu lý lịch",
+        "description": "Bố cục sơ yếu lý lịch/CV gọn gàng"
+      },
+      "report": {
+        "name": "Mẫu Báo cáo",
+        "description": "Báo cáo chính thức với các phần"
+      }
+    },
+    "tips": {
+      "title": "Mẹo",
+      "styleTag": "Bao gồm các kiểu CSS trong thẻ <style>",
+      "autoUpdate": "Xem trước tự động cập nhật khi bạn nhập",
+      "pageSize": "Sử dụng bộ chọn kích thước trang để phù hợp với đầu ra PDF mong muốn",
+      "privacy": "Tất cả xử lý diễn ra trong trình duyệt của bạn - mã của bạn không bao giờ rời khỏi thiết bị"
+    },
+    "errors": {
+      "emptyContent": "Nội dung Trống",
+      "emptyContentMessage": "Vui lòng nhập mã HTML trước khi xuất.",
+      "exportFailed": "Xuất Thất bại"
+    },
+    "customDimensions": "Kích thước tùy chỉnh",
+    "widthPts": "Chiều rộng (điểm)",
+    "heightPts": "Chiều cao (điểm)"
   }
 }

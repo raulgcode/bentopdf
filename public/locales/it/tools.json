@@ -494,5 +494,57 @@
     "subtitle": "Converti file email (EML, MSG) in formato PDF. Supporta esportazioni Outlook e formati email standard.",
     "acceptedFormats": "File EML, MSG",
     "convertButton": "Converti in PDF"
+  },
+  "htmlToPdf": {
+    "name": "HTML in PDF",
+    "subtitle": "Scrivi codice HTML/CSS con anteprima in tempo reale ed esporta in PDF.",
+    "pageTitle": "HTML in PDF - Editor con Anteprima in Tempo Reale",
+    "description": "Scrivi codice HTML e CSS, visualizza l'anteprima in tempo reale ed esporta in PDF con la dimensione pagina selezionata.",
+    "editorTitle": "Editor HTML + CSS",
+    "previewTitle": "Anteprima in Tempo Reale",
+    "pageSize": "Dimensione Pagina",
+    "orientation": "Orientamento",
+    "portrait": "Verticale",
+    "landscape": "Orizzontale",
+    "margin": "Margine",
+    "loadTemplate": "Carica Modello",
+    "exportPdf": "Esporta PDF",
+    "formatCode": "Formatta Codice",
+    "clearCode": "Cancella Codice",
+    "refreshPreview": "Aggiorna Anteprima",
+    "chooseTemplate": "Scegli un Modello",
+    "templates": {
+      "basic": {
+        "name": "Documento Base",
+        "description": "Un documento semplice con intestazione e paragrafi"
+      },
+      "invoice": {
+        "name": "Modello Fattura",
+        "description": "Un layout professionale per fatture"
+      },
+      "resume": {
+        "name": "Modello Curriculum",
+        "description": "Un layout pulito per curriculum/CV"
+      },
+      "report": {
+        "name": "Modello Report",
+        "description": "Un report formale con sezioni"
+      }
+    },
+    "tips": {
+      "title": "Suggerimenti",
+      "styleTag": "Includi gli stili CSS in un tag <style>",
+      "autoUpdate": "L'anteprima si aggiorna automaticamente mentre scrivi",
+      "pageSize": "Usa il selettore dimensione pagina per il tuo output PDF desiderato",
+      "privacy": "Tutta l'elaborazione avviene nel tuo browser - il tuo codice non lascia mai il tuo dispositivo"
+    },
+    "errors": {
+      "emptyContent": "Contenuto Vuoto",
+      "emptyContentMessage": "Inserisci del codice HTML prima di esportare.",
+      "exportFailed": "Esportazione Fallita"
+    },
+    "customDimensions": "Dimensioni personalizzate",
+    "widthPts": "Larghezza (punti)",
+    "heightPts": "Altezza (punti)"
   }
 }

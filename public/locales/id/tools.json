@@ -521,5 +521,57 @@
     "subtitle": "Konversi file email (EML, MSG) ke format PDF. Mendukung ekspor Outlook dan format email standar.",
     "acceptedFormats": "File EML, MSG",
     "convertButton": "Konversi ke PDF"
+  },
+  "htmlToPdf": {
+    "name": "HTML ke PDF",
+    "subtitle": "Tulis kode HTML/CSS dengan pratinjau langsung dan ekspor ke PDF.",
+    "pageTitle": "HTML ke PDF - Editor dengan Pratinjau Langsung",
+    "description": "Tulis kode HTML dan CSS, lihat pratinjau secara real-time, dan ekspor ke PDF dengan ukuran halaman pilihan Anda.",
+    "editorTitle": "Editor HTML + CSS",
+    "previewTitle": "Pratinjau Langsung",
+    "pageSize": "Ukuran Halaman",
+    "orientation": "Orientasi",
+    "portrait": "Potret",
+    "landscape": "Lanskap",
+    "margin": "Margin",
+    "loadTemplate": "Muat Template",
+    "exportPdf": "Ekspor PDF",
+    "formatCode": "Format Kode",
+    "clearCode": "Hapus Kode",
+    "refreshPreview": "Segarkan Pratinjau",
+    "chooseTemplate": "Pilih Template",
+    "templates": {
+      "basic": {
+        "name": "Dokumen Dasar",
+        "description": "Dokumen sederhana dengan judul dan paragraf"
+      },
+      "invoice": {
+        "name": "Template Faktur",
+        "description": "Tata letak faktur profesional"
+      },
+      "resume": {
+        "name": "Template Riwayat Hidup",
+        "description": "Tata letak CV/riwayat hidup yang bersih"
+      },
+      "report": {
+        "name": "Template Laporan",
+        "description": "Laporan formal dengan bagian-bagian"
+      }
+    },
+    "tips": {
+      "title": "Tips",
+      "styleTag": "Sertakan gaya CSS di dalam tag <style>",
+      "autoUpdate": "Pratinjau diperbarui secara otomatis saat Anda mengetik",
+      "pageSize": "Gunakan pemilih ukuran halaman untuk mencocokkan output PDF yang diinginkan",
+      "privacy": "Semua pemrosesan terjadi di browser Anda - kode Anda tidak pernah meninggalkan perangkat Anda"
+    },
+    "errors": {
+      "emptyContent": "Konten Kosong",
+      "emptyContentMessage": "Silakan masukkan kode HTML sebelum mengekspor.",
+      "exportFailed": "Ekspor Gagal"
+    },
+    "customDimensions": "Dimensi kustom",
+    "widthPts": "Lebar (poin)",
+    "heightPts": "Tinggi (poin)"
   }
 }

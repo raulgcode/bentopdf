@@ -518,5 +518,57 @@
     "subtitle": "将电子邮件文件 (EML, MSG) 转换为 PDF 格式。支持 Outlook 导出和标准邮件格式。",
     "acceptedFormats": "EML, MSG 文件",
     "convertButton": "转换为 PDF"
+  },
+  "htmlToPdf": {
+    "name": "HTML 转 PDF",
+    "subtitle": "编写 HTML/CSS 代码，实时预览并导出为 PDF。",
+    "pageTitle": "HTML 转 PDF - 实时预览编辑器",
+    "description": "编写 HTML 和 CSS 代码，查看实时预览，并以您选择的页面大小导出为 PDF。",
+    "editorTitle": "HTML + CSS 编辑器",
+    "previewTitle": "实时预览",
+    "pageSize": "页面大小",
+    "orientation": "方向",
+    "portrait": "纵向",
+    "landscape": "横向",
+    "margin": "边距",
+    "loadTemplate": "加载模板",
+    "exportPdf": "导出 PDF",
+    "formatCode": "格式化代码",
+    "clearCode": "清除代码",
+    "refreshPreview": "刷新预览",
+    "chooseTemplate": "选择模板",
+    "templates": {
+      "basic": {
+        "name": "基础文档",
+        "description": "包含标题和段落的简单文档"
+      },
+      "invoice": {
+        "name": "发票模板",
+        "description": "专业的发票布局"
+      },
+      "resume": {
+        "name": "简历模板",
+        "description": "简洁的简历/CV 布局"
+      },
+      "report": {
+        "name": "报告模板",
+        "description": "带有章节的正式报告"
+      }
+    },
+    "tips": {
+      "title": "提示",
+      "styleTag": "在 <style> 标签中包含 CSS 样式",
+      "autoUpdate": "预览会在您输入时自动更新",
+      "pageSize": "使用页面大小选择器匹配您所需的 PDF 输出",
+      "privacy": "所有处理都在您的浏览器中进行 - 您的代码永远不会离开您的设备"
+    },
+    "errors": {
+      "emptyContent": "内容为空",
+      "emptyContentMessage": "请在导出前输入一些 HTML 代码。",
+      "exportFailed": "导出失败"
+    },
+    "customDimensions": "自定义尺寸",
+    "widthPts": "宽度（点）",
+    "heightPts": "高度（点）"
   }
 }

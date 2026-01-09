@@ -284,5 +284,57 @@
     "subtitle": "E-posta dosyalarını (EML, MSG) PDF formatına dönüştürün. Outlook dışa aktarmalarını ve standart e-posta formatlarını destekler.",
     "acceptedFormats": "EML, MSG Dosyaları",
     "convertButton": "PDF'ye Dönüştür"
+  },
+  "htmlToPdf": {
+    "name": "HTML'den PDF'ye",
+    "subtitle": "Canlı önizleme ile HTML/CSS kodu yazın ve PDF'ye dışa aktarın.",
+    "pageTitle": "HTML'den PDF'ye - Canlı Önizlemeli Editör",
+    "description": "HTML ve CSS kodu yazın, gerçek zamanlı önizleme görün ve seçtiğiniz sayfa boyutunda PDF'ye dışa aktarın.",
+    "editorTitle": "HTML + CSS Editörü",
+    "previewTitle": "Canlı Önizleme",
+    "pageSize": "Sayfa Boyutu",
+    "orientation": "Yönlendirme",
+    "portrait": "Dikey",
+    "landscape": "Yatay",
+    "margin": "Kenar Boşluğu",
+    "loadTemplate": "Şablon Yükle",
+    "exportPdf": "PDF'ye Aktar",
+    "formatCode": "Kodu Biçimlendir",
+    "clearCode": "Kodu Temizle",
+    "refreshPreview": "Önizlemeyi Yenile",
+    "chooseTemplate": "Şablon Seçin",
+    "templates": {
+      "basic": {
+        "name": "Temel Belge",
+        "description": "Başlık ve paragraflarla basit bir belge"
+      },
+      "invoice": {
+        "name": "Fatura Şablonu",
+        "description": "Profesyonel fatura düzeni"
+      },
+      "resume": {
+        "name": "Özgeçmiş Şablonu",
+        "description": "Temiz özgeçmiş/CV düzeni"
+      },
+      "report": {
+        "name": "Rapor Şablonu",
+        "description": "Bölümlü resmi rapor"
+      }
+    },
+    "tips": {
+      "title": "İpuçları",
+      "styleTag": "CSS stillerini <style> etiketi içinde ekleyin",
+      "autoUpdate": "Önizleme siz yazarken otomatik güncellenir",
+      "pageSize": "İstediğiniz PDF çıktısıyla eşleşmesi için sayfa boyutu seçiciyi kullanın",
+      "privacy": "Tüm işlem tarayıcınızda gerçekleşir - kodunuz cihazınızdan asla ayrılmaz"
+    },
+    "errors": {
+      "emptyContent": "Boş İçerik",
+      "emptyContentMessage": "Dışa aktarmadan önce lütfen HTML kodu girin.",
+      "exportFailed": "Dışa Aktarma Başarısız"
+    },
+    "customDimensions": "Özel boyutlar",
+    "widthPts": "Genişlik (nokta)",
+    "heightPts": "Yükseklik (nokta)"
   }
 }

@@ -521,5 +521,57 @@
     "subtitle": "E-Mail-Dateien (EML, MSG) in PDF-Format konvertieren. Unterstützt Outlook-Exporte und Standard-E-Mail-Formate.",
     "acceptedFormats": "EML, MSG-Dateien",
     "convertButton": "In PDF konvertieren"
+  },
+  "htmlToPdf": {
+    "name": "HTML zu PDF",
+    "subtitle": "HTML/CSS-Code mit Live-Vorschau schreiben und als PDF exportieren.",
+    "pageTitle": "HTML zu PDF - Editor mit Live-Vorschau",
+    "description": "Schreiben Sie HTML- und CSS-Code, sehen Sie die Echtzeit-Vorschau und exportieren Sie als PDF mit Ihrer gewählten Seitengröße.",
+    "editorTitle": "HTML + CSS Editor",
+    "previewTitle": "Live-Vorschau",
+    "pageSize": "Seitengröße",
+    "orientation": "Ausrichtung",
+    "portrait": "Hochformat",
+    "landscape": "Querformat",
+    "margin": "Rand",
+    "loadTemplate": "Vorlage laden",
+    "exportPdf": "PDF exportieren",
+    "formatCode": "Code formatieren",
+    "clearCode": "Code löschen",
+    "refreshPreview": "Vorschau aktualisieren",
+    "chooseTemplate": "Vorlage auswählen",
+    "templates": {
+      "basic": {
+        "name": "Einfaches Dokument",
+        "description": "Ein einfaches Dokument mit Überschrift und Absätzen"
+      },
+      "invoice": {
+        "name": "Rechnungsvorlage",
+        "description": "Ein professionelles Rechnungslayout"
+      },
+      "resume": {
+        "name": "Lebenslauf-Vorlage",
+        "description": "Ein sauberes Lebenslauf/CV-Layout"
+      },
+      "report": {
+        "name": "Berichtsvorlage",
+        "description": "Ein formeller Bericht mit Abschnitten"
+      }
+    },
+    "tips": {
+      "title": "Tipps",
+      "styleTag": "CSS-Stile in einem <style>-Tag einschließen",
+      "autoUpdate": "Die Vorschau wird automatisch beim Tippen aktualisiert",
+      "pageSize": "Verwenden Sie den Seitengrößen-Selektor für Ihre gewünschte PDF-Ausgabe",
+      "privacy": "Alle Verarbeitung erfolgt in Ihrem Browser - Ihr Code verlässt niemals Ihr Gerät"
+    },
+    "errors": {
+      "emptyContent": "Leerer Inhalt",
+      "emptyContentMessage": "Bitte geben Sie HTML-Code ein, bevor Sie exportieren.",
+      "exportFailed": "Export fehlgeschlagen"
+    },
+    "customDimensions": "Benutzerdefinierte Abmessungen",
+    "widthPts": "Breite (Punkte)",
+    "heightPts": "Höhe (Punkte)"
   }
 }
