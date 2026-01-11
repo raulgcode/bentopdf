@@ -96,10 +96,29 @@
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
 
     <link href="src/css/styles.css" rel="stylesheet" />
+
+    <!-- Inline script to prevent flash of unstyled content (FOUC) -->
+    <script>
+      (function () {
+        const storedTheme = localStorage.getItem('bentopdf-theme');
+        if (storedTheme === 'light') {
+          document.documentElement.classList.add('light');
+        } else if (
+          !storedTheme &&
+          window.matchMedia('(prefers-color-scheme: light)').matches
+        ) {
+          document.documentElement.classList.add('light');
+        }
+      })();
+    </script>
   </head>
 
-  <body class="antialiased">
-    <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-30">
+  <body
+    class="antialiased bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 transition-colors duration-300"
+  >
+    <nav
+      class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-30 shadow-sm dark:shadow-none transition-colors duration-300"
+    >
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center h-16">
           <div
@@ -111,7 +130,7 @@
               alt="Bento PDF Logo"
               class="h-8 w-8"
             />
-            <span class="text-white font-bold text-xl ml-2">
+            <span class="text-gray-900 dark:text-white font-bold text-xl ml-2">
               <a href="index.html">BentoPDF</a>
             </span>
           </div>
@@ -134,14 +153,63 @@
               data-i18n="nav.allTools"
               >All Tools</a
             >
+            <!-- Theme Switch -->
+            <div class="theme-switch">
+              <button
+                id="theme-toggle-btn"
+                type="button"
+                class="theme-switch-track"
+                aria-label="Toggle theme"
+                title="Toggle light/dark theme"
+              >
+                <span class="theme-switch-thumb">
+                  <svg
+                    id="theme-icon-moon"
+                    class="theme-switch-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                    ></path>
+                  </svg>
+                  <svg
+                    id="theme-icon-sun"
+                    class="theme-switch-icon hidden"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                  </svg>
+                </span>
+              </button>
+            </div>
             <a
               href="https://github.com/alam00000/bentopdf/"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 text-sm font-medium bg-gray-800 text-gray-200 border border-gray-600 pl-2.5 pr-3 py-1 rounded-full transition-colors duration-200 shadow-sm hover:shadow-md hover:bg-gray-700"
+              class="inline-flex items-center gap-1.5 text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-600 pl-2.5 pr-3 py-1 rounded-full transition-colors duration-200 shadow-sm hover:shadow-md hover:bg-gray-200 dark:hover:bg-gray-700"
             >
               <svg
-                class="w-4 h-4 flex-shrink-0 text-gray-200"
+                class="w-4 h-4 flex-shrink-0 text-gray-700 dark:text-gray-200"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -152,20 +220,69 @@
                   clip-rule="evenodd"
                 />
               </svg>
-              <span id="github-stars-desktop">-</span>
+              <span
+                id="github-stars-desktop"
+                class="text-gray-700 dark:text-gray-200"
+                >-</span
+              >
             </a>
           </div>
 
           <!-- Mobile Hamburger Button -->
-          <div class="md:hidden flex items-center gap-4">
+          <div class="md:hidden flex items-center gap-3">
+            <!-- Mobile Theme Toggle -->
+            <button
+              id="theme-toggle-btn-mobile"
+              type="button"
+              class="p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition-colors"
+              aria-label="Toggle theme"
+              title="Toggle light/dark theme"
+            >
+              <svg
+                id="theme-icon-moon-mobile"
+                class="w-5 h-5"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                ></path>
+              </svg>
+              <svg
+                id="theme-icon-sun-mobile"
+                class="w-5 h-5 hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </button>
             <a
               href="https://github.com/alam00000/bentopdf/"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 text-sm font-medium bg-gray-800 text-gray-200 border border-gray-600 pl-2.5 pr-3 py-1 rounded-full transition-colors duration-200 shadow-sm hover:shadow-md hover:bg-gray-700"
+              class="inline-flex items-center gap-1.5 text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-600 pl-2.5 pr-3 py-1 rounded-full transition-colors duration-200 shadow-sm hover:shadow-md hover:bg-gray-200 dark:hover:bg-gray-700"
             >
               <svg
-                class="w-4 h-4 flex-shrink-0 text-gray-200"
+                class="w-4 h-4 flex-shrink-0 text-gray-700 dark:text-gray-200"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -176,12 +293,16 @@
                   clip-rule="evenodd"
                 />
               </svg>
-              <span id="github-stars-mobile">-</span>
+              <span
+                id="github-stars-mobile"
+                class="text-gray-700 dark:text-gray-200"
+                >-</span
+              >
             </a>
             <button
               id="mobile-menu-button"
               type="button"
-              class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition-colors"
+              class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition-colors"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
@@ -230,7 +351,7 @@
       <!-- Mobile Menu Dropdown -->
       <div
         id="mobile-menu"
-        class="hidden md:hidden bg-gray-800 border-t border-gray-700"
+        class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700"
       >
         <div class="px-2 pt-2 pb-3 space-y-1 text-center">
           <a href="index.html" class="mobile-nav-link" data-i18n="nav.home"
@@ -304,7 +425,9 @@
     <div id="app" class="min-h-screen container mx-auto p-4 md:p-8">
       <section id="hero-section" class="text-center py-20 relative">
         <div class="bg-grid-pattern"></div>
-        <h1 class="text-4xl md:text-7xl font-bold text-white mb-4">
+        <h1
+          class="text-4xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4"
+        >
           <span data-i18n="hero.title">The</span>
           <span
             class="inline-flex items-center gap-3 border-2 border-indigo-400 bg-indigo-900 text-indigo-300 px-4 py-2 rounded-full mx-2 align-middle"
@@ -326,21 +449,30 @@
           class="flex flex-wrap justify-center items-center gap-2 sm:gap-4 mb-12 mt-12"
         >
           <span
-            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800/40 border border-gray-700/50 text-gray-400 text-sm font-medium"
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 dark:bg-gray-800/40 border border-gray-300/80 dark:border-gray-700/50 text-gray-700 dark:text-gray-400 text-sm font-medium"
           >
-            <i data-lucide="check-circle" class="w-4 h-4 text-gray-400"></i>
+            <i
+              data-lucide="check-circle"
+              class="w-4 h-4 text-gray-600 dark:text-gray-400"
+            ></i>
             <span data-i18n="hero.noSignups">No Signups</span>
           </span>
           <span
-            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800/40 border border-gray-700/50 text-gray-400 text-sm font-medium"
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 dark:bg-gray-800/40 border border-gray-300/80 dark:border-gray-700/50 text-gray-700 dark:text-gray-400 text-sm font-medium"
           >
-            <i data-lucide="check-circle" class="w-4 h-4 text-gray-400"></i>
+            <i
+              data-lucide="check-circle"
+              class="w-4 h-4 text-gray-600 dark:text-gray-400"
+            ></i>
             <span data-i18n="hero.unlimitedUse">Unlimited Use</span>
           </span>
           <span
-            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800/40 border border-gray-700/50 text-gray-400 text-sm font-medium"
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 dark:bg-gray-800/40 border border-gray-300/80 dark:border-gray-700/50 text-gray-700 dark:text-gray-400 text-sm font-medium"
           >
-            <i data-lucide="check-circle" class="w-4 h-4 text-gray-400"></i>
+            <i
+              data-lucide="check-circle"
+              class="w-4 h-4 text-gray-600 dark:text-gray-400"
+            ></i>
             <span data-i18n="hero.worksOffline">Works Offline</span>
           </span>
         </div>
@@ -467,128 +599,142 @@
       <div class="section-divider"></div>
 
       <section id="features-section" class="py-20">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12"
+        >
           <span data-i18n="features.title"></span>
           <span class="marker-slanted" data-i18n="features.bentoPdf"
             >BentoPDF?</span
           >
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="bg-gray-800 p-6 rounded-lg">
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-transparent shadow-sm dark:shadow-none"
+          >
             <div class="flex items-center gap-4 mb-3">
               <i
                 data-lucide="user-plus"
-                class="w-10 h-10 text-indigo-400 flex-shrink-0"
+                class="w-10 h-10 text-indigo-500 dark:text-indigo-400 flex-shrink-0"
               ></i>
               <h3
-                class="text-xl font-bold text-white"
+                class="text-xl font-bold text-gray-900 dark:text-white"
                 data-i18n="features.noSignup.title"
               >
                 No Signup
               </h3>
             </div>
             <p
-              class="text-gray-400 pl-14"
+              class="text-gray-600 dark:text-gray-400 pl-14"
               data-i18n="features.noSignup.description"
             >
               Start instantly, no accounts or emails.
             </p>
           </div>
-          <div class="bg-gray-800 p-6 rounded-lg">
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-transparent shadow-sm dark:shadow-none"
+          >
             <div class="flex items-center gap-4 mb-3">
               <i
                 data-lucide="shield"
-                class="w-10 h-10 text-indigo-400 flex-shrink-0"
+                class="w-10 h-10 text-indigo-500 dark:text-indigo-400 flex-shrink-0"
               ></i>
               <h3
-                class="text-xl font-bold text-white"
+                class="text-xl font-bold text-gray-900 dark:text-white"
                 data-i18n="features.noUploads.title"
               >
                 No Uploads
               </h3>
             </div>
             <p
-              class="text-gray-400 pl-14"
+              class="text-gray-600 dark:text-gray-400 pl-14"
               data-i18n="features.noUploads.description"
             >
               100% client-side, your files never leave your device.
             </p>
           </div>
-          <div class="bg-gray-800 p-6 rounded-lg">
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-transparent shadow-sm dark:shadow-none"
+          >
             <div class="flex items-center gap-4 mb-3">
               <i
                 data-lucide="badge-dollar-sign"
-                class="w-10 h-10 text-indigo-400 flex-shrink-0"
+                class="w-10 h-10 text-indigo-500 dark:text-indigo-400 flex-shrink-0"
               ></i>
               <h3
-                class="text-xl font-bold text-white"
+                class="text-xl font-bold text-gray-900 dark:text-white"
                 data-i18n="features.foreverFree.title"
               >
                 Forever Free
               </h3>
             </div>
             <p
-              class="text-gray-400 pl-14"
+              class="text-gray-600 dark:text-gray-400 pl-14"
               data-i18n="features.foreverFree.description"
             >
               All tools, no trials, no paywalls.
             </p>
           </div>
-          <div class="bg-gray-800 p-6 rounded-lg">
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-transparent shadow-sm dark:shadow-none"
+          >
             <div class="flex items-center gap-4 mb-3">
               <i
                 data-lucide="infinity"
-                class="w-10 h-10 text-indigo-400 flex-shrink-0"
+                class="w-10 h-10 text-indigo-500 dark:text-indigo-400 flex-shrink-0"
               ></i>
               <h3
-                class="text-xl font-bold text-white"
+                class="text-xl font-bold text-gray-900 dark:text-white"
                 data-i18n="features.noLimits.title"
               >
                 No Limits
               </h3>
             </div>
             <p
-              class="text-gray-400 pl-14"
+              class="text-gray-600 dark:text-gray-400 pl-14"
               data-i18n="features.noLimits.description"
             >
               Use as much as you want, no hidden caps.
             </p>
           </div>
-          <div class="bg-gray-800 p-6 rounded-lg">
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-transparent shadow-sm dark:shadow-none"
+          >
             <div class="flex items-center gap-4 mb-3">
               <i
                 data-lucide="layers"
-                class="w-10 h-10 text-indigo-400 flex-shrink-0"
+                class="w-10 h-10 text-indigo-500 dark:text-indigo-400 flex-shrink-0"
               ></i>
               <h3
-                class="text-xl font-bold text-white"
+                class="text-xl font-bold text-gray-900 dark:text-white"
                 data-i18n="features.batchProcessing.title"
               >
                 Batch Processing
               </h3>
             </div>
             <p
-              class="text-gray-400 pl-14"
+              class="text-gray-600 dark:text-gray-400 pl-14"
               data-i18n="features.batchProcessing.description"
             >
               Handle unlimited PDFs in one go.
             </p>
           </div>
-          <div class="bg-gray-800 p-6 rounded-lg">
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-transparent shadow-sm dark:shadow-none"
+          >
             <div class="flex items-center gap-4 mb-3">
               <i
                 data-lucide="zap"
-                class="w-10 h-10 text-indigo-400 flex-shrink-0"
+                class="w-10 h-10 text-indigo-500 dark:text-indigo-400 flex-shrink-0"
               ></i>
               <h3
-                class="text-xl font-bold text-white"
+                class="text-xl font-bold text-gray-900 dark:text-white"
                 data-i18n="features.lightningFast.title"
               >
                 Lightning Fast
               </h3>
             </div>
             <p
-              class="text-gray-400 pl-14"
+              class="text-gray-600 dark:text-gray-400 pl-14"
               data-i18n="features.lightningFast.description"
             >
               Process PDFs instantly, without waiting or delays.
@@ -600,13 +746,15 @@
       <div class="section-divider"></div>
 
       <div id="tools-header" class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3"
+        >
           <span data-i18n="tools.title">Get Started with</span>
           <span class="marker-slanted ml-2" data-i18n="tools.toolsLabel">
             Tools</span
           >
         </h2>
-        <p class="text-gray-400" data-i18n="tools.subtitle">
+        <p class="text-gray-600 dark:text-gray-400" data-i18n="tools.subtitle">
           Click a tool to open the file uploader
         </p>
       </div>
@@ -615,12 +763,15 @@
         <div class="mb-8 max-w-lg mx-auto">
           <div class="relative">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-              <i data-lucide="search" class="w-5 h-5 text-gray-400"></i>
+              <i
+                data-lucide="search"
+                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+              ></i>
             </span>
             <input
               type="text"
               id="search-bar"
-              class="w-full pl-10 pr-4 py-3 bg-gray-700 text-white border border-gray-600 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+              class="w-full pl-10 pr-4 py-3 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="Search for a tool (e.g., 'split', 'organize'...)"
               data-i18n-placeholder="tools.searchPlaceholder"
             />
@@ -629,11 +780,11 @@
             >
               <kbd
                 id="shortcut"
-                class="bg-gray-800 px-2.5 py-1.5 rounded-md text-xs font-semibold text-gray-300 border border-gray-700 shadow-sm"
+                class="bg-gray-100 dark:bg-gray-800 px-2.5 py-1.5 rounded-md text-xs font-semibold text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-700 shadow-sm"
               ></kbd>
               <button
                 id="open-shortcuts-btn"
-                class="p-1 hover:bg-gray-600 rounded-md text-gray-400 hover:text-white transition-colors"
+                class="p-1 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 title="Keyboard Shortcuts"
               >
                 <i data-lucide="settings" class="w-4 h-4"></i>
@@ -955,7 +1106,7 @@
       <section id="security-compliance-section" class="py-20 hide-section">
         <div class="mb-8 text-center">
           <h2
-            class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6 text-balance"
+            class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-6 text-balance"
           >
             <span data-i18n="compliance.title"></span>
             <span class="inline-flex items-center gap-2">
@@ -979,7 +1130,7 @@
         </div>
         <div class="mb-16 text-center">
           <span
-            class="inline-flex items-center gap-2 text-indigo-400 text-lg font-medium transition-colors"
+            class="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 text-lg font-medium transition-colors"
             data-i18n="compliance.processingLocal"
           >
             All the processing happens locally on your device.
@@ -1001,13 +1152,13 @@
               />
             </div>
             <h3
-              class="text-lg md:text-xl font-bold text-white mb-3"
+              class="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-3"
               data-i18n="compliance.gdpr.title"
             >
               GDPR compliance
             </h3>
             <p
-              class="text-gray-400 text-sm md:text-base leading-relaxed max-w-xs"
+              class="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed max-w-xs"
               data-i18n="compliance.gdpr.description"
             >
               Protects the personal data and privacy of individuals within the
@@ -1026,13 +1177,13 @@
               />
             </div>
             <h3
-              class="text-lg md:text-xl font-bold text-white mb-3"
+              class="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-3"
               data-i18n="compliance.ccpa.title"
             >
               CCPA compliance
             </h3>
             <p
-              class="text-gray-400 text-sm md:text-base leading-relaxed max-w-xs"
+              class="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed max-w-xs"
               data-i18n="compliance.ccpa.description"
             >
               Gives California residents rights over how their personal
@@ -1051,13 +1202,13 @@
               />
             </div>
             <h3
-              class="text-lg md:text-xl font-bold text-white mb-3"
+              class="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-3"
               data-i18n="compliance.hipaa.title"
             >
               HIPAA compliance
             </h3>
             <p
-              class="text-gray-400 text-sm md:text-base leading-relaxed max-w-xs"
+              class="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed max-w-xs"
               data-i18n="compliance.hipaa.description"
             >
               Sets safeguards for handling sensitive health information in the
@@ -1073,7 +1224,7 @@
 
       <section id="faq-accordion" class="space-y-4 hide-section">
         <h2
-          class="text-3xl md:text-4xl font-bold text-center text-white mb-12 mt-8"
+          class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12 mt-8"
         >
           <span data-i18n="faq.title">Frequently Asked</span>
           <span class="marker-slanted" data-i18n="faq.questions"
@@ -1081,24 +1232,29 @@
           >
         </h2>
         <!-- Existing FAQs here... -->
-        <div class="faq-item bg-gray-800 rounded-lg border border-gray-700">
+        <div
+          class="faq-item bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+        >
           <button
             class="faq-question w-full flex justify-between items-center text-left p-6"
           >
             <span
-              class="text-lg font-semibold text-white"
+              class="text-lg font-semibold text-gray-900 dark:text-white"
               data-i18n="faq.isFree.question"
               >Is BentoPDF really free?</span
             >
             <i
               data-lucide="chevron-down"
-              class="faq-icon w-6 h-6 text-gray-400 transition-transform"
+              class="faq-icon w-6 h-6 text-gray-500 dark:text-gray-400 transition-transform"
             ></i>
           </button>
           <div
             class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
           >
-            <p class="p-6 pt-0 text-gray-400" data-i18n="faq.isFree.answer">
+            <p
+              class="p-6 pt-0 text-gray-600 dark:text-gray-400"
+              data-i18n="faq.isFree.answer"
+            >
               Yes, absolutely. All tools on BentoPDF are 100% free to use, with
               no file limits, no sign-ups, and no watermarks. We believe
               everyone deserves access to simple, powerful PDF tools without a
@@ -1107,12 +1263,14 @@
           </div>
         </div>
 
-        <div class="faq-item bg-gray-800 rounded-lg border border-gray-700">
+        <div
+          class="faq-item bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+        >
           <button
             class="faq-question w-full flex justify-between items-center text-left p-6"
           >
             <span
-              class="text-lg font-semibold text-white"
+              class="text-lg font-semibold text-gray-900 dark:text-white"
               data-i18n="faq.areFilesSecure.question"
               >Are my files secure? Where are they processed?</span
             >
@@ -1125,7 +1283,7 @@
             class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
           >
             <p
-              class="p-6 pt-0 text-gray-400"
+              class="p-6 pt-0 text-gray-600 dark:text-gray-400"
               data-i18n="faq.areFilesSecure.answer"
             >
               Your files are as secure as possible because they **never leave
@@ -1136,12 +1294,14 @@
           </div>
         </div>
 
-        <div class="faq-item bg-gray-800 rounded-lg border border-gray-700">
+        <div
+          class="faq-item bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+        >
           <button
             class="faq-question w-full flex justify-between items-center text-left p-6"
           >
             <span
-              class="text-lg font-semibold text-white"
+              class="text-lg font-semibold text-gray-900 dark:text-white"
               data-i18n="faq.platforms.question"
               >Does it work on Mac, Windows, and Mobile?</span
             >
@@ -1153,7 +1313,10 @@
           <div
             class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
           >
-            <p class="p-6 pt-0 text-gray-400" data-i18n="faq.platforms.answer">
+            <p
+              class="p-6 pt-0 text-gray-600 dark:text-gray-400"
+              data-i18n="faq.platforms.answer"
+            >
               Yes! Since BentoPDF runs entirely in your browser, it works on any
               operating system with a modern web browser, including Windows,
               macOS, Linux, iOS, and Android.
@@ -1162,12 +1325,14 @@
         </div>
 
         <!-- New FAQ: GDPR Compliance -->
-        <div class="faq-item bg-gray-800 rounded-lg border border-gray-700">
+        <div
+          class="faq-item bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+        >
           <button
             class="faq-question w-full flex justify-between items-center text-left p-6"
           >
             <span
-              class="text-lg font-semibold text-white"
+              class="text-lg font-semibold text-gray-900 dark:text-white"
               data-i18n="faq.gdprCompliant.question"
               >Is BentoPDF GDPR compliant?</span
             >
@@ -1180,7 +1345,7 @@
             class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
           >
             <p
-              class="p-6 pt-0 text-gray-400"
+              class="p-6 pt-0 text-gray-600 dark:text-gray-400"
               data-i18n="faq.gdprCompliant.answer"
             >
               Yes. BentoPDF is fully GDPR compliant. Since all file processing
@@ -1192,12 +1357,14 @@
         </div>
 
         <!-- New FAQ: Data Storage -->
-        <div class="faq-item bg-gray-800 rounded-lg border border-gray-700">
+        <div
+          class="faq-item bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+        >
           <button
             class="faq-question w-full flex justify-between items-center text-left p-6"
           >
             <span
-              class="text-lg font-semibold text-white"
+              class="text-lg font-semibold text-gray-900 dark:text-white"
               data-i18n="faq.dataStorage.question"
               >Do you store or track any of my files?</span
             >
@@ -1210,7 +1377,7 @@
             class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
           >
             <p
-              class="p-6 pt-0 text-gray-400"
+              class="p-6 pt-0 text-gray-600 dark:text-gray-400"
               data-i18n="faq.dataStorage.answer"
             >
               No. We never store, track, or log your files. Everything you do on
@@ -1222,12 +1389,14 @@
         </div>
 
         <!-- New FAQ: Privacy -->
-        <div class="faq-item bg-gray-800 rounded-lg border border-gray-700">
+        <div
+          class="faq-item bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+        >
           <button
             class="faq-question w-full flex justify-between items-center text-left p-6"
           >
             <span
-              class="text-lg font-semibold text-white"
+              class="text-lg font-semibold text-gray-900 dark:text-white"
               data-i18n="faq.different.question"
               >What makes BentoPDF different from other PDF tools?</span
             >
@@ -1239,7 +1408,10 @@
           <div
             class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
           >
-            <p class="p-6 pt-0 text-gray-400" data-i18n="faq.different.answer">
+            <p
+              class="p-6 pt-0 text-gray-600 dark:text-gray-400"
+              data-i18n="faq.different.answer"
+            >
               Most PDF tools upload your files to a server for processing.
               BentoPDF never does that. We use secure, modern web technology to
               process your files directly in your browser. This means faster
@@ -1249,12 +1421,14 @@
         </div>
 
         <!-- New FAQ: Browser-Based -->
-        <div class="faq-item bg-gray-800 rounded-lg border border-gray-700">
+        <div
+          class="faq-item bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+        >
           <button
             class="faq-question w-full flex justify-between items-center text-left p-6"
           >
             <span
-              class="text-lg font-semibold text-white"
+              class="text-lg font-semibold text-gray-900 dark:text-white"
               data-i18n="faq.browserBased.question"
               >How does browser-based processing keep me safe?</span
             >
@@ -1267,7 +1441,7 @@
             class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
           >
             <p
-              class="p-6 pt-0 text-gray-400"
+              class="p-6 pt-0 text-gray-600 dark:text-gray-400"
               data-i18n="faq.browserBased.answer"
             >
               By running entirely inside your browser, BentoPDF ensures that
@@ -1279,12 +1453,14 @@
         </div>
 
         <!-- New FAQ: Analytics -->
-        <div class="faq-item bg-gray-800 rounded-lg border border-gray-700">
+        <div
+          class="faq-item bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+        >
           <button
             class="faq-question w-full flex justify-between items-center text-left p-6"
           >
             <span
-              class="text-lg font-semibold text-white"
+              class="text-lg font-semibold text-gray-900 dark:text-white"
               data-i18n="faq.analytics.question"
               >Do you use cookies or analytics to track me?</span
             >
@@ -1296,7 +1472,10 @@
           <div
             class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
           >
-            <p class="p-6 pt-0 text-gray-400" data-i18n="faq.analytics.answer">
+            <p
+              class="p-6 pt-0 text-gray-600 dark:text-gray-400"
+              data-i18n="faq.analytics.answer"
+            >
               We care about your privacy. BentoPDF does not track personal
               information. We use
               <a
@@ -1318,7 +1497,9 @@
       <div class="section-divider hide-section"></div>
 
       <section id="testimonials-section" class="py-20 hide-section">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12"
+        >
           <span data-i18n="testimonials.title">What Our</span>
           <span class="marker-slanted" data-i18n="testimonials.users"
             >Users</span
@@ -1331,7 +1512,7 @@
           <div class="testimonial-card">
             <div class="flex items-center mb-4">
               <div>
-                <p class="font-bold text-white">Sarah L.</p>
+                <p class="font-bold text-gray-900 dark:text-white">Sarah L.</p>
                 <div class="text-yellow-400 flex items-center text-sm">
                   ★★★★★
                 </div>
@@ -1346,7 +1527,7 @@
           <div class="testimonial-card">
             <div class="flex items-center mb-4">
               <div>
-                <p class="font-bold text-white">Mark Chen</p>
+                <p class="font-bold text-gray-900 dark:text-white">Mark Chen</p>
                 <div class="text-yellow-400 flex items-center text-sm">
                   ★★★★★
                 </div>
@@ -1361,7 +1542,9 @@
           <div class="testimonial-card">
             <div class="flex items-center mb-4">
               <div>
-                <p class="font-bold text-white">Anonymous User A-35Z</p>
+                <p class="font-bold text-gray-900 dark:text-white">
+                  Anonymous User A-35Z
+                </p>
                 <div class="text-yellow-400 flex items-center text-sm">
                   ★☆☆☆☆
                 </div>
@@ -1376,7 +1559,9 @@
           <div class="testimonial-card">
             <div class="flex items-center mb-4">
               <div>
-                <p class="font-bold text-white">Dr. Brickson</p>
+                <p class="font-bold text-gray-900 dark:text-white">
+                  Dr. Brickson
+                </p>
                 <div class="text-yellow-400 flex items-center text-sm">
                   ★★★★★
                 </div>
@@ -1392,7 +1577,9 @@
           <div class="testimonial-card">
             <div class="flex items-center mb-4">
               <div>
-                <p class="font-bold text-white">AdTracker Pro</p>
+                <p class="font-bold text-gray-900 dark:text-white">
+                  AdTracker Pro
+                </p>
                 <div class="text-yellow-400 flex items-center text-sm">
                   ★☆☆☆☆
                 </div>
@@ -1407,7 +1594,7 @@
           <div class="testimonial-card">
             <div class="flex items-center mb-4">
               <div>
-                <p class="font-bold text-white">Raj P.</p>
+                <p class="font-bold text-gray-900 dark:text-white">Raj P.</p>
                 <div class="text-yellow-400 flex items-center text-sm">
                   ★★★★★
                 </div>
@@ -1434,7 +1621,7 @@
       </button>
     </div>
 
-    <footer class="mt-16 border-t-2 border-gray-700 py-8">
+    <footer class="mt-16 border-t-2 border-gray-200 dark:border-gray-700 py-8">
       <div class="container mx-auto px-4">
         <div
           class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left"
@@ -1446,9 +1633,14 @@
                 alt="Bento PDF Logo"
                 class="h-10 w-10 mr-3"
               />
-              <span class="text-xl font-bold text-white">BentoPDF</span>
+              <span class="text-xl font-bold text-gray-900 dark:text-white"
+                >BentoPDF</span
+              >
             </div>
-            <p class="text-gray-400 text-sm" data-i18n="footer.copyright">
+            <p
+              class="text-gray-600 dark:text-gray-400 text-sm"
+              data-i18n="footer.copyright"
+            >
               &copy; 2026 BentoPDF. All rights reserved.
             </p>
             <p class="text-gray-500 text-xs mt-2">
@@ -1458,10 +1650,13 @@
           </div>
 
           <div>
-            <h3 class="font-bold text-white mb-4" data-i18n="footer.company">
+            <h3
+              class="font-bold text-gray-900 dark:text-white mb-4"
+              data-i18n="footer.company"
+            >
               Company
             </h3>
-            <ul class="space-y-2 text-gray-400">
+            <ul class="space-y-2 text-gray-600 dark:text-gray-400">
               <li>
                 <a
                   href="/about.html"
@@ -1490,10 +1685,13 @@
           </div>
 
           <div>
-            <h3 class="font-bold text-white mb-4" data-i18n="footer.legal">
+            <h3
+              class="font-bold text-gray-900 dark:text-white mb-4"
+              data-i18n="footer.legal"
+            >
               Legal
             </h3>
-            <ul class="space-y-2 text-gray-400">
+            <ul class="space-y-2 text-gray-600 dark:text-gray-400">
               <li>
                 <a
                   href="/licensing.html"
@@ -1522,7 +1720,10 @@
           </div>
 
           <div>
-            <h3 class="font-bold text-white mb-4" data-i18n="footer.followUs">
+            <h3
+              class="font-bold text-gray-900 dark:text-white mb-4"
+              data-i18n="footer.followUs"
+            >
               Follow Us
             </h3>
             <div class="flex justify-center md:justify-start space-x-4">
@@ -1530,7 +1731,7 @@
                 href="https://github.com/alam00000/bentopdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-gray-400 hover:text-indigo-400"
+                class="text-gray-500 dark:text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400"
                 title="GitHub"
               >
                 <svg
@@ -1550,7 +1751,7 @@
                 href="https://discord.gg/Bgq3Ay3f2w"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-gray-400 hover:text-indigo-400"
+                class="text-gray-600 dark:text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400"
                 title="Discord"
               >
                 <svg
@@ -1566,21 +1767,21 @@
               </a>
               <a
                 href="https://www.instagram.com/thebentopdf/"
-                class="text-gray-400 hover:text-indigo-400"
+                class="text-gray-600 dark:text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400"
                 title="Instagram"
               >
                 <i data-lucide="instagram"></i>
               </a>
               <a
                 href="https://www.linkedin.com/company/bentopdf/"
-                class="text-gray-400 hover:text-indigo-400"
+                class="text-gray-600 dark:text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400"
                 title="LinkedIn"
               >
                 <i data-lucide="linkedin"></i>
               </a>
               <a
                 href="https://x.com/BentoPDF"
-                class="text-gray-400 hover:text-indigo-400"
+                class="text-gray-600 dark:text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400"
                 title="X (Twitter)"
               >
                 <svg
@@ -1600,6 +1801,7 @@
       </div>
     </footer>
 
+    <script type="module" src="src/js/theme.ts"></script>
     <script type="module" src="src/js/utils/lucide-init.ts"></script>
     <script type="module" src="src/version.ts"></script>
     <script type="module" src="src/js/main.ts"></script>
